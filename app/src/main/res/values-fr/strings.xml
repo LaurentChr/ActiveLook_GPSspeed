@@ -1,0 +1,83 @@
+<resources>
+    <string name="large_text">
+        "Une application démo ActiveLook pour les données GPS\n\n"
+        "Elle affiche dans vos lunettes :\n - la longitude\n - la latitude\n - l'altitude\n - le cap\n - la VITESSE et la vitesse maximale"
+    </string>
+    <string name="action_settings">Paramètres</string>
+    <string name="button_scan">Rechercher des lunettes</string>
+    <string name="bubble_button">Bouton bulle</string>
+    <string-array name="unit_array">
+        <item>km/h</item>
+        <item>m/s</item>
+        <item>miles/h</item>
+        <item>noeuds</item>
+    </string-array>
+    <string name="meter">m</string>
+    <string name="min">min</string>
+    <string name="max">max</string>
+    <string name="fastest">max</string>
+
+    <string name="switchBinary">Mode binaire</string>
+    <string name="ble_not_supported">BLE n\'est pas pris en charge</string>
+    <string name="label_data">Données:</string>
+    <string name="label_device_address">Adresse de l\'appareil :</string>
+    <string name="label_state">État:</string>
+    <string name="no_data">Pas de données</string>
+    <string name="connected">Connecté</string>
+    <string name="disconnected">Déconnecté</string>
+    <string name="title_devices">Analyse des appareils BLE</string>
+    <string name="error_bluetooth_not_supported">Bluetooth non pris en charge.</string>
+
+    <string name="unknown_device">Périphérique inconnu</string>
+    <string name="unknown_characteristic">Caractéristique inconnue</string>
+    <string name="unknown_service">Service inconnu</string>
+
+    <!-- Menu items -->
+    <string name="menu_refresh">Rafraîchir</string>
+    <string name="menu_connect">Lien</string>
+    <string name="menu_disconnect">Déconnecter</string>
+    <string name="menu_scan">Analyse</string>
+    <string name="menu_stop">Arrêter</string>
+    <string name="demo">Démo</string>
+
+    <string name="source">Choisissez la source</string>
+    <string name="position">Obtenir la position</string>
+    <string name="adresse">Obtenir l\'adresse</string>
+
+    <string name="error_bluetooth_not_supported_debug">BLE n\'est pas pris en charge, en utilisant le stub SDK.</string>
+    <string name="bluetooth_activated">BLE activé</string>
+    <string name="stop_scan">Arrêter</string>
+    <string name="error_glass_connection">Impossible de se connecter aux lunettes</string>
+    <string name="button_test">Envoyer la commande : Tester</string>
+    <string name="switch_gesture">Geste</string>
+    <string name="listitem_address">%1s - %2s</string>
+    <string name="button_general_commands">Général</string>
+    <string name="button_back">Dos</string>
+    <string name="button_display_luma_commands">Luminosité de l\'affichage</string>
+    <string name="button_optical_sensor_commands">Capteur optique</string>
+
+    <string name="glasses_id">Lunettes ID</string>
+    <string name="firmware">Logiciel</string>
+    <string name="longitude">longitude</string>
+    <string name="latitude">latitude</string>
+    <string name="altitude">altitude</string>
+    <string name="long_short">long</string>
+    <string name="lat_short">lat</string>
+    <string name="alt_short">alt</string>
+    <string name="crs_short">cap</string>
+    <string name="spd_short">vit</string>
+    <string name="bearing">cap </string>
+    <string name="speed">vitesse</string>
+    <string name="unit">unité</string>
+    <string name="click_on_km_hr_to_change_the_speed_unit">Cliquer sur </string>
+    <string name="to_change_the_speed_unit"> pour changer l\'unité des vitesse</string>
+    <string name="reset">RaZ</string>
+    <string name="reset_hand">Aussi remis à zéro par votre main devant l\'œil gauche</string>
+    <string name="sensor">Capteur</string>
+
+    <string name="no_BLE"><![CDATA[Votre BLUETOOTH n\'est pas ouvert !!!/n>>>relancez l\'application]]></string>
+    <string name="failed_weather">impossible d\'obtenir les données météo</string>
+    <string name="timer">minuteur</string>
+    <string name="brightness">Luminance:</string>
+
+</resources>

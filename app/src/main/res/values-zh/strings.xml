@@ -1,0 +1,83 @@
+<resources>
+    <string name="large_text">
+        "这是 Active Look 应用程序。 GPS 数据演示\n\n"
+        "它在您的眼镜中显示：\n - 纬度\n - 经度\n - 高度\n - 方向\n - 速度和最大速度"
+    </string>
+    <string name="action_settings">设置</string>
+    <string name="button_scan">扫描</string>
+    <string name="bubble_button">气泡按钮</string>
+    <string-array name="unit_array">
+        <item>公里/小时</item>
+        <item>米/秒</item>
+        <item>英里/小时</item>
+        <item>结</item>
+    </string-array>
+    <string name="meter">米</string>
+    <string name="min">最低</string>
+    <string name="max">最高</string>
+    <string name="fastest">最快</string>
+
+    <string name="switchBinary">二进制模式</string>
+    <string name="ble_not_supported">不支持蓝牙</string>
+    <string name="label_data">数据：</string>
+    <string name="label_device_address">设备地址：</string>
+    <string name="label_state">状态：</string>
+    <string name="no_data">没有数据</string>
+    <string name="connected">连接的</string>
+    <string name="disconnected">断开连接</string>
+    <string name="title_devices">BLE 设备扫描</string>
+    <string name="error_bluetooth_not_supported">不支持蓝牙。</string>
+
+    <string name="unknown_device">未知设备</string>
+    <string name="unknown_characteristic">未知特征</string>
+    <string name="unknown_service">未知服务</string>
+
+    <!-- Menu items -->
+    <string name="menu_refresh">刷新</string>
+    <string name="menu_connect">联系</string>
+    <string name="menu_disconnect">断开</string>
+    <string name="menu_scan">寻找眼镜</string>
+    <string name="menu_stop">停止</string>
+    <string name="demo">演示</string>
+
+    <string name="source">选择来源</string>
+    <string name="position">获取位置</string>
+    <string name="adresse">获取地址</string>
+
+    <string name="error_bluetooth_not_supported_debug">不支持 BLE，使用存根 SDK。</string>
+    <string name="bluetooth_activated">BLE激活</string>
+    <string name="stop_scan">停止</string>
+    <string name="error_glass_connection">无法连接到眼镜</string>
+    <string name="button_test">发送命令：测试</string>
+    <string name="switch_gesture">手势</string>
+    <string name="listitem_address">%1s - %2s</string>
+    <string name="button_general_commands">一般的</string>
+    <string name="button_back">返回</string>
+    <string name="button_display_luma_commands">显示亮度</string>
+    <string name="button_optical_sensor_commands">光学传感器</string>
+
+    <string name="glasses_id">眼镜编号</string>
+    <string name="firmware">固件</string>
+    <string name="longitude">经度</string>
+    <string name="latitude">纬度</string>
+    <string name="altitude">高度</string>
+    <string name="long_short">经度</string>
+    <string name="lat_short">纬度</string>
+    <string name="alt_short">高度</string>
+    <string name="crs_short">方向</string>
+    <string name="spd_short">速度</string>
+    <string name="bearing">方向</string>
+    <string name="speed">速度</string>
+    <string name="unit">单元</string>
+    <string name="click_on_km_hr_to_change_the_speed_unit">单击 </string>
+    <string name="to_change_the_speed_unit"> 更改速度单位</string>
+    <string name="reset">重置</string>
+    <string name="reset_hand">也用手放在左眼上重置</string>
+    <string name="sensor">传感器</string>
+
+    <string name="no_BLE"><![CDATA[你的蓝牙没有打开!!!/n>>>重新启动应用程序]]></string>
+    <string name="failed_weather">获取天气数据失败</string>
+    <string name="timer">定时器</string>
+    <string name="brightness">亮度: </string>
+
+</resources>

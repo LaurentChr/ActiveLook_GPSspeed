@@ -1,0 +1,83 @@
+<resources>
+    <string name="large_text">
+        "Dit is de ActiveLook-app demo voor ZEILEN\n\n"
+        "Het toont in uw bril:\n - de breedtegraad\n - de lengtegraad\n - de hoogte\n - de koers\n - de snelheid en de maximale snelheid"
+    </string>
+    <string name="action_settings">Instellingen</string>
+    <string name="button_scan">zoek naar een bril</string>
+    <string name="bubble_button">Bubble-knop</string>
+    <string-array name="unit_array">
+        <item>km/u</item>
+        <item>m/s</item>
+        <item>mijl/u</item>
+        <item>knoop</item>
+    </string-array>
+    <string name="meter">m</string>
+    <string name="min">min</string>
+    <string name="max">max</string>
+    <string name="fastest">max</string>
+
+    <string name="switchBinary">Binaire modus</string>
+    <string name="ble_not_supported">BLE wordt niet ondersteund</string>
+    <string name="label_data">Gegevens:</string>
+    <string name="label_device_address">Apparaat adres:</string>
+    <string name="label_state">Staat:</string>
+    <string name="no_data">Geen informatie</string>
+    <string name="connected">Verbonden</string>
+    <string name="disconnected">Losgekoppeld</string>
+    <string name="title_devices">BLE-apparaatscan</string>
+    <string name="error_bluetooth_not_supported">Bluetooth wordt niet ondersteund.</string>
+
+    <string name="unknown_device">Onbekend apparaat</string>
+    <string name="unknown_characteristic">Onbekend kenmerk</string>
+    <string name="unknown_service">Onbekende dienst</string>
+
+    <!-- Menu items -->
+    <string name="menu_refresh">Vernieuwen</string>
+    <string name="menu_connect">Verbinding</string>
+    <string name="menu_disconnect">verbinding verbreken</string>
+    <string name="menu_scan">Scannen</string>
+    <string name="menu_stop">Beëindigen</string>
+    <string name="demo">demo</string>
+
+    <string name="source">Kies bron</string>
+    <string name="position">Krijg positie</string>
+    <string name="adresse">Krijg adres</string>
+
+    <string name="error_bluetooth_not_supported_debug">BLE wordt niet ondersteund, met behulp van stub SDK.</string>
+    <string name="bluetooth_activated">BLE geactiveerd</string>
+    <string name="stop_scan">Beëindigen</string>
+    <string name="error_glass_connection">Kan geen verbinding maken met een bril</string>
+    <string name="button_test">Stuur commando: Test</string>
+    <string name="switch_gesture">Gebaar</string>
+    <string name="listitem_address">%1s - %2s</string>
+    <string name="button_general_commands">Algemeen</string>
+    <string name="button_back">terugkeren</string>
+    <string name="button_display_luma_commands">Luminantie weergeven</string>
+    <string name="button_optical_sensor_commands">Optische sensor</string>
+
+    <string name="glasses_id">Bril ID</string>
+    <string name="firmware">firmware</string>
+    <string name="longitude">lengtegraad</string>
+    <string name="latitude">breedtegraad</string>
+    <string name="altitude">hoogte</string>
+    <string name="long_short">leng</string>
+    <string name="lat_short">bre</string>
+    <string name="alt_short">ho</string>
+    <string name="crs_short">ko</string>
+    <string name="spd_short">sne</string>
+    <string name="bearing">koers</string>
+    <string name="speed">snelheid</string>
+    <string name="unit">eenheid</string>
+    <string name="click_on_km_hr_to_change_the_speed_unit">Klik op </string>
+    <string name="to_change_the_speed_unit"> om de snelheidseenheid te wijzigen</string>
+    <string name="reset">Resetten</string>
+    <string name="reset_hand">Reset ook met je hand op je linkeroog</string>
+    <string name="sensor">Sensor</string>
+
+    <string name="no_BLE"><![CDATA[Uw BLUETOOTH is niet geopend !!!/n>>>start de toepassing opnieuw]]></string>
+    <string name="failed_weather">geen weergegevens kunnen ophalen</string>
+    <string name="timer">timer</string>
+    <string name="brightness">Helderheid: </string>
+
+</resources>

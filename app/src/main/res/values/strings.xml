@@ -1,0 +1,131 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name" tools:ignore="MissingTranslation">ActiveLook GPS Speed</string>
+    <string name="large_text">
+        "A demo app. Active Look for GPS data\n\n"
+        "It shows in your glasses :\n - the longitude\n - the latitude\n - the altitude\n - the course\n - the SPEED and the maximum speed"
+    </string>
+    <string name="action_settings">Settings</string>
+    <string name="button_scan">search for glasses</string>
+    <string name="bubble_button">Bubble button</string>
+    <string-array name="unit_array">
+        <item>km/hr</item>
+        <item>m/s</item>
+        <item>miles/hr</item>
+        <item>knot</item>
+    </string-array>
+    <string name="meter">m</string>
+    <string name="min">min</string>
+    <string name="max">max</string>
+    <string name="fastest">max</string>
+
+    <string name="app_version" tools:ignore="MissingTranslation">v2.2</string>
+
+    <string name="switchBinary">Binary Mode</string>
+    <string name="ble_not_supported">BLE is not supported</string>
+    <string name="label_data">Data:</string>
+    <string name="label_device_address">Device address:</string>
+    <string name="label_state">State:</string>
+    <string name="no_data">No data</string>
+    <string name="connected">Connected</string>
+    <string name="disconnected">Disconnected</string>
+    <string name="title_devices">BLE Device Scan</string>
+    <string name="error_bluetooth_not_supported">Bluetooth not supported.</string>
+
+    <string name="unknown_device">Unknown device</string>
+    <string name="unknown_characteristic">Unknown characteristic</string>
+    <string name="unknown_service">Unknown service</string>
+
+    <!-- Menu items -->
+    <string name="menu_refresh">Refresh</string>
+    <string name="menu_connect">Connection</string>
+    <string name="menu_disconnect">Disconnect</string>
+    <string name="menu_scan">Scan</string>
+    <string name="menu_stop">Stop</string>
+    <string name="demo">Demo</string>
+    <string name="tests" tools:ignore="MissingTranslation">Tests</string>
+    <string name="cleardisplay" tools:ignore="MissingTranslation">Clear Display</string>
+
+    <string name="ValueX" tools:ignore="MissingTranslation">X = 0</string>
+    <string name="ValueY" tools:ignore="MissingTranslation">Y = 0</string>
+
+    <string name="source">Choose source</string>
+    <string name="position">Get position</string>
+    <string name="adresse">Get adresse</string>
+
+    <string name="flechegauche" tools:ignore="MissingTranslation">←</string>
+    <string name="flechehaut" tools:ignore="MissingTranslation">↑</string>
+    <string name="flechebas" tools:ignore="MissingTranslation">↓</string>
+    <string name="flechedroit" tools:ignore="MissingTranslation">→</string>
+
+    <string name="X0" tools:ignore="MissingTranslation">X0 :</string>
+    <string name="X0DefaultValue" tools:ignore="MissingTranslation">15</string>
+    <string name="X1" tools:ignore="MissingTranslation">X1 :</string>
+    <string name="X1DefaultValue" tools:ignore="MissingTranslation">150</string>
+    <string name="Color" tools:ignore="MissingTranslation">Color :</string>
+    <string name="ColorDefaultValue" tools:ignore="MissingTranslation">15</string>
+    <string name="Radius" tools:ignore="MissingTranslation">Radius :</string>
+    <string name="RadiusDefaultValue" tools:ignore="MissingTranslation">50</string>
+
+    <string name="Y0" tools:ignore="MissingTranslation">Y0 :</string>
+    <string name="Y0DefaultValue" tools:ignore="MissingTranslation">15</string>
+    <string name="Y1" tools:ignore="MissingTranslation">Y1 :</string>
+    <string name="Y1DefaultValue" tools:ignore="MissingTranslation">150</string>
+    <string name="font" tools:ignore="MissingTranslation">Font :</string>
+    <string name="FontDefaultValue" tools:ignore="MissingTranslation">3</string>
+    <string name="Direction" tools:ignore="MissingTranslation">Direction :</string>
+    <string name="DirectionDefaultValue" tools:ignore="MissingTranslation">4</string>
+
+    <string name="text" tools:ignore="MissingTranslation">Text :</string>
+
+    <string name="point" tools:ignore="MissingTranslation">Point</string>
+    <string name="rectangle" tools:ignore="MissingTranslation">Rectangle</string>
+    <string name="circle" tools:ignore="MissingTranslation">Circle</string>
+    <string name="line" tools:ignore="MissingTranslation">Line</string>
+    <string name="fillrectangle" tools:ignore="MissingTranslation">Fill Rectangle</string>
+    <string name="filledcircle" tools:ignore="MissingTranslation">Filled Circle</string>
+    <string name="streamingbitmap" tools:ignore="MissingTranslation">Streaming Bitmap</string>
+    <string name="error_bluetooth_not_supported_debug">BLE is not supported, using stub SDK.</string>
+    <string name="bluetooth_activated">BLE activated</string>
+    <string name="stop_scan">Stop</string>
+    <string name="error_glass_connection">Could not connect to glasses</string>
+    <string name="button_test">Send command: Test</string>
+    <string name="switch_gesture">Gesture</string>
+    <string name="listitem_address">%1s - %2s</string>
+    <string name="button_general_commands">General</string>
+    <string name="button_back">Back</string>
+    <string name="button_display_luma_commands">Display luminance</string>
+    <string name="button_optical_sensor_commands">Optical sensor</string>
+    <string name="button_GPS_commands" tools:ignore="MissingTranslation">GPS data</string>
+    <string name="button_graphics_commands" tools:ignore="MissingTranslation">Graphics</string>
+    <string name="button_configuration_commands" tools:ignore="MissingTranslation">Configuration</string>
+    <string name="button_font_commands" tools:ignore="MissingTranslation">Font</string>
+    <string name="button_bitmaps_commands" tools:ignore="MissingTranslation">Bitmaps</string>
+    <string name="button_layouts_commands" tools:ignore="MissingTranslation">Layouts</string>
+    <string name="button_gauge_commands" tools:ignore="MissingTranslation">Gauge</string>
+    <string name="button_page_commands" tools:ignore="MissingTranslation">Page</string>
+    <string name="button_debug_commands" tools:ignore="MissingTranslation">Debug</string>
+
+    <string name="glasses_id">Glasses ID</string>
+    <string name="firmware">FirmWare</string>
+    <string name="longitude">longitude</string>
+    <string name="latitude">latitude</string>
+    <string name="altitude">altitude</string>
+    <string name="long_short">long</string>
+    <string name="lat_short">lat</string>
+    <string name="alt_short">alt</string>
+    <string name="crs_short">crs</string>
+    <string name="spd_short">spd</string>
+    <string name="bearing">course</string>
+    <string name="speed">speed</string>
+    <string name="unit">unit</string>
+    <string name="click_on_km_hr_to_change_the_speed_unit">Click on </string>
+    <string name="to_change_the_speed_unit"> to change the speed unit</string>
+    <string name="reset">Reset</string>
+    <string name="reset_hand">Also reset with your hand on your left eye</string>
+    <string name="sensor">Sensor</string>
+    <string name="no_BLE"><![CDATA[Your BLUETOOTH is not open !!!/n>>>relaunch the application]]></string>
+    <string name="failed_weather">failed to get weather data</string>
+    <string name="timer">timer</string>
+    <string name="brightness">Brightness: </string>
+
+</resources>

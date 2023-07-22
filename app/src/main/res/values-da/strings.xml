@@ -1,0 +1,83 @@
+<resources>
+    <string name="large_text">
+        "Dette er ActiveLook-appen demo til SEJL\n\n"
+        "Det viser i dine briller :\n - breddegraden\n - længdegraden\n - højden\n - kursen\n - hastigheden og den maksimale hastighed"
+    </string>
+    <string name="action_settings">Indstillinger</string>
+    <string name="button_scan">søg efter briller</string>
+    <string name="bubble_button">Boble knap</string>
+    <string-array name="unit_array">
+        <item>km/t</item>
+        <item>m/s</item>
+        <item>miles/t</item>
+        <item>knude</item>
+    </string-array>
+    <string name="meter">m</string>
+    <string name="min">min</string>
+    <string name="max">max</string>
+    <string name="fastest">max</string>
+
+    <string name="switchBinary">Binær tilstand</string>
+    <string name="ble_not_supported">BLE er ikke understøttet</string>
+    <string name="label_data">Data:</string>
+    <string name="label_device_address">Enhedsadresse:</string>
+    <string name="label_state">Stat:</string>
+    <string name="no_data">Ingen data</string>
+    <string name="connected">Forbundet</string>
+    <string name="disconnected">Afbrudt</string>
+    <string name="title_devices">BLE Device Scan</string>
+    <string name="error_bluetooth_not_supported">Bluetooth understøttes ikke.</string>
+
+    <string name="unknown_device">Ukendt enhed</string>
+    <string name="unknown_characteristic">Ukendt karakteristik</string>
+    <string name="unknown_service">Ukendt tjeneste</string>
+
+    <!-- Menu items -->
+    <string name="menu_refresh">Opdater</string>
+    <string name="menu_connect">Forbindelse</string>
+    <string name="menu_disconnect">Koble fra</string>
+    <string name="menu_scan">Scanning</string>
+    <string name="menu_stop">Hold op</string>
+    <string name="demo">Demo</string>
+
+    <string name="source">Vælg kilde</string>
+    <string name="position">Få stilling</string>
+    <string name="adresse">Få adresse</string>
+
+    <string name="error_bluetooth_not_supported_debug">BLE understøttes ikke ved brug af stub SDK.</string>
+    <string name="bluetooth_activated">BLE aktiveret</string>
+    <string name="stop_scan">Hold op</string>
+    <string name="error_glass_connection">Kunne ikke oprette forbindelse til briller</string>
+    <string name="button_test">Send kommando: Test</string>
+    <string name="switch_gesture">Håndbevægelse</string>
+    <string name="listitem_address">%1s - %2s</string>
+    <string name="button_general_commands">Generel</string>
+    <string name="button_back">tilbage</string>
+    <string name="button_display_luma_commands">Display luminans</string>
+    <string name="button_optical_sensor_commands">Optisk sensor</string>
+
+    <string name="glasses_id">Brille ID</string>
+    <string name="firmware">Firmware</string>
+    <string name="longitude">længde</string>
+    <string name="latitude">breddegrad</string>
+    <string name="altitude">højde</string>
+    <string name="long_short">læng</string>
+    <string name="lat_short">bred</string>
+    <string name="alt_short">høj</string>
+    <string name="crs_short">kur</string>
+    <string name="spd_short">frt</string>
+    <string name="bearing">kursen</string>
+    <string name="speed">fart</string>
+    <string name="unit">enhed</string>
+    <string name="click_on_km_hr_to_change_the_speed_unit">Klik på </string>
+    <string name="to_change_the_speed_unit"> for at ændre hastighedsenheden</string>
+    <string name="reset">Nulstil</string>
+    <string name="reset_hand">Nulstil også med hånden på venstre øje</string>
+    <string name="sensor">Sensor</string>
+
+    <string name="no_BLE"><![CDATA[Din BLUETOOTH er ikke åben !!!/n>>>genstart applikationen]]></string>
+    <string name="failed_weather">kunne ikke hente vejrdata</string>
+    <string name="timer">timer</string>
+    <string name="brightness">Lysstyrke: </string>
+
+</resources>
