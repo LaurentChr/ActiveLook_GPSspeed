@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name = "ActiveLook GPSspeed"
+rootProject.name = "ActiveLook GPSspeed Demo"
