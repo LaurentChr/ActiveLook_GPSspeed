@@ -1,5 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name" tools:ignore="MissingTranslation">ActiveLook GPS Speed</string>
+    <string name="app_name" tools:ignore="MissingTranslation">ActiveLook GPS Speed Demo</string>
     <string name="large_text">
         "A demo app. Active Look for GPS data\n\n"
         "It shows in your glasses :\n - the longitude\n - the latitude\n - the altitude\n - the course\n - the SPEED and the maximum speed"

@@ -1,18 +1,36 @@
 package com.GPSspeed;
 
+import static java.lang.Math.max;
+import static java.lang.Math.min;
+
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.NotificationManager;
 import android.bluetooth.BluetoothAdapter;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
+import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.Typeface;
+import android.graphics.drawable.AdaptiveIconDrawable;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.BatteryManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.Settings;
+import android.text.TextPaint;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -31,9 +49,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.activelook.activelooksdk.Glasses;
 import com.activelook.activelooksdk.types.DeviceInformation;
+import com.activelook.activelooksdk.types.ImgStreamFormat;
 import com.activelook.activelooksdk.types.Rotation;
 import com.activelook.activelooksdk.types.holdFlushAction;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
@@ -59,15 +79,17 @@ public class MainActivity extends AppCompatActivity {
     private SeekBar luminanceSeekBar;
     private Spinner unit;
     private ArrayAdapter adapter_unit;
-    private String unitShort = "km/h";
-    private int counter=0, gbattery=0, topmrg=0, botmrg=0, lftmrg=0, rgtmrg=0;
+    private String unitShort = "km/h", prev_packageName="", prev_titleData="", prev_textData="";
+    private boolean notification = false;
+    private int counter=0, gbattery=0, notif_cntr=0, topmrg=0, botmrg=0, lftmrg=0, rgtmrg=0;
     private double latitude=0.0, longitude=0.0, altitude=0.0,  altitudeAccuracy=0.0,
             course=0.0, courseAccuracy=0.0, unitRatio=3.6, speed=0.0, maxSpeed=0.0;
     List<Double> latitudeList= new ArrayList<Double>(), longitudeList= new ArrayList<Double>(),
             altitudeList= new ArrayList<Double>();
-
     Handler clockHandler = new Handler();
     Runnable clockRunnable;
+    Handler messageHandler = new Handler();
+    Runnable messageRunnable;
     // GPSTracker class
     GPSTracker gps;
 
@@ -142,6 +164,13 @@ public class MainActivity extends AppCompatActivity {
             clockHandler.postDelayed(clockRunnable, 10000); // on redemande toutes les 10000ms
         }
 
+        NotificationManager notif = (NotificationManager)
+                getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+        if (!notif.isNotificationPolicyAccessGranted()) {
+            startActivity(new Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS));
+        }
+        LocalBroadcastManager.getInstance(this).registerReceiver(onNotice, new IntentFilter("Msg"));
+
         // select the speed unit
         unit.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @SuppressLint("SetTextI18n")
@@ -184,7 +213,89 @@ public class MainActivity extends AppCompatActivity {
             public void onStartTrackingTouch(SeekBar seekBar) { }
             public void onStopTrackingTouch(SeekBar seekBar) { }
         });
+
     }
+
+//---------------------------------------------------------------------------------
+
+    public final BroadcastReceiver onNotice = new BroadcastReceiver() {
+        @SuppressLint("SetTextI18n")
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            final Glasses g = connectedGlasses;
+            String packageName = intent.getStringExtra("package");
+            String titleData = intent.getStringExtra("title");
+            String textData = intent.getStringExtra("text");
+            @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf2 = new SimpleDateFormat("HH:mm:ss");
+            String time = sdf2.format(new Date());
+            Log.d("MainActivity", "receivedNotif : " + time + " : " + packageName
+                    + " : " + titleData + " : " + textData);
+            boolean displayData = true;
+
+
+            // filter some messages
+            if (packageName.equals("com.android.systemui")) {displayData = false;}
+            if (packageName.equals("com.android.vending")) {displayData = false;}
+            if (packageName.equals(prev_packageName) && titleData.equals(prev_titleData)
+                    && textData.equals(prev_textData)) {displayData = false;}
+
+            if(displayData) {
+                prev_packageName = packageName; prev_titleData = titleData; prev_textData = textData;
+                Drawable drawable_pack = null;
+
+                //================= PREPARE TO WRITE IN THE GLASSES
+
+                // shape the notification text then turn into image
+                String textfr;
+                textfr = titleData + " : " + textData + ' ';
+                textfr = textfr.replaceAll("\n\r"," ");
+                textfr = textfr.replaceAll("\r\n"," ");
+                textfr = textfr.replaceAll("\n"," ");
+                textfr = textfr.replaceAll("\t"," ");
+                textfr = textfr.replaceAll("\r"," ");
+                for (int j = 0; j < 32; j++) {
+                    textfr = textfr.replaceAll(String.valueOf((char) j),""); }
+                Bitmap txtimg = textAsBitmap(textfr,22);
+                int linWidth = txtimg.getWidth();
+
+                notification = true; notif_cntr=0;
+                messageHandler.removeCallbacks(messageRunnable);
+                int delay = 2 * 500; // 2=shift notif_cntr++ ; 500 = delay of 5 seconds
+                final Bitmap[] sub_txtimg = new Bitmap[1];
+                messageRunnable = new Runnable() {
+                    @SuppressLint("DefaultLocale")
+                    @Override
+                    public void run() {
+                        if (g!=null && notification && linWidth > 0) {
+                            // write NOTIFICATION
+                            if (linWidth < 305 && notif_cntr == 0) {
+                                g.imgStream(txtimg, ImgStreamFormat.MONO_4BPP_HEATSHRINK,
+                                    (short)(304+notif_cntr-txtimg.getWidth()), (short) 231);}
+                            if (linWidth > notif_cntr+303) {
+                                Log.d("MainActivity", "receivedNotif : " + sdf2.format(new Date())
+                                        + " notif_cntr = " + notif_cntr + " - linWidth = " + linWidth );
+                                g.imgStream(Bitmap.createBitmap(txtimg, notif_cntr, 0, 304,24),
+                                        ImgStreamFormat.MONO_4BPP_HEATSHRINK, (short) 0, (short) 231);}
+                            // end of NOTIFICATION
+                            if ((linWidth < 305 && notif_cntr > delay) || (linWidth > 304 && notif_cntr > linWidth-303 + delay)) {
+                                notification=false;
+                                notif_cntr =0;
+                                messageHandler.removeCallbacks(messageRunnable);
+                                g.color((byte)0); g.rectf((short)0,(short)224,(short)304,(short)255); g.color((byte)15);
+                                displayClock();}
+                        }
+                        notif_cntr++;
+                        notif_cntr++; // shift by 2 pixels the message
+//                        notif_cntr++; // shift by 3 pixels the message
+                        messageHandler.postDelayed(this, 200);
+                    }
+                }; // new message Runnable
+
+                messageHandler.removeCallbacks(messageRunnable);
+                messageHandler.postDelayed(messageRunnable,200); // on redemande toutes les 200ms
+            }
+        }
+    };
 
 //---------------------------------------------------------------------------------
 
@@ -239,7 +350,7 @@ public class MainActivity extends AppCompatActivity {
             longitudeMax = getMaxValue(longitudeList);
             altitudeList.add(altitude); altitudeMin = getMinValue(altitudeList);
             altitudeMax = getMaxValue(altitudeList);
-            scale1 = Math.max(Math.max(latitudeMax-latitudeMin, longitudeMax-longitudeMin),0.001);
+            scale1 = max(max(latitudeMax-latitudeMin, longitudeMax-longitudeMin),0.001);
             // recalculate latitudeMin and longitudeMin to center the way shape
             latitudeMin = (latitudeMin + latitudeMax - scale1) / 2;
             longitudeMin = (longitudeMin + longitudeMax - scale1) / 2;
@@ -293,7 +404,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
                 // recalculate altitudeMin to center the altitude shape
-                scale2 = Math.max(altitudeMax - altitudeMin, 10);
+                scale2 = max(altitudeMax - altitudeMin, 10);
                 altitudeMin = (altitudeMin + altitudeMax - scale2) / 2;
                 // trace all lines of the altitude
                 if (nbPoints > 3) {
@@ -301,9 +412,9 @@ public class MainActivity extends AppCompatActivity {
                     g.color((byte) 8);
                     for(int d = 0; d < nbPoints-1; d++){
                         y1 = 70 + ((altitudeList.get(d)-altitudeMin)*26/scale2);
-                        x1 = 243.0 - d * 242 / Math.max(nbPoints, 24.0);
+                        x1 = 243.0 - d * 242 / max(nbPoints, 24.0);
                         y2 = 70 + ((altitudeList.get(d+1)-altitudeMin)*26/scale2);
-                        x2 = 243.0 - (d+1) * 242 / Math.max(nbPoints, 24.0);
+                        x2 = 243.0 - (d+1) * 242 / max(nbPoints, 24.0);
                         g.line(new Point((int)Math.round(x1), (int)Math.round(y1)),
                                 new Point((int)Math.round(x2), (int)Math.round(y2)));
                     }
@@ -355,6 +466,62 @@ public class MainActivity extends AppCompatActivity {
             }
     }
 
+
+    public Bitmap textAsBitmap(String text, int textSize) {
+        TextPaint tp = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+        tp.setTextSize(textSize);
+        tp.setColor(Color.WHITE); // white for text
+        tp.setTextAlign(Paint.Align.LEFT);
+        float baseline = -tp.ascent(); // ascent() is negative
+        int width = max((int) (tp.measureText(text) + 0.5f),1); // round with 1 as min
+        int height = max((int) (baseline + tp.descent() + 0.5f),1);
+        Paint bp = new Paint(Paint.ANTI_ALIAS_FLAG);
+        bp.setStyle(Paint.Style.FILL);
+        bp.setColor(Color.BLACK); // black for background
+        Bitmap image = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        Canvas c = new Canvas(image);
+        c.drawPaint(bp);
+        c.drawText(text, 0, baseline, tp);
+        return image;
+    }
+
+
+    public Bitmap getResizedBitmap(Bitmap bm, int newWidth, int newHeight) {
+        int width = bm.getWidth(), height = bm.getHeight();
+        float scaleWidth = ((float) newWidth) / width, scaleHeight = ((float) newHeight) / height;
+        // CREATE A MATRIX FOR THE MANIPULATION
+        Matrix matrix = new Matrix();
+        // RESIZE THE BIT MAP
+        matrix.postScale(scaleWidth, scaleHeight);
+        // "RECREATE" THE NEW BITMAP
+        Bitmap resizedBitmap = Bitmap.createBitmap(bm, 0, 0, width, height, matrix, false);
+        bm.recycle();
+        return resizedBitmap;
+    }
+
+    public Bitmap getDefaultBitmap(Drawable d) {
+        if (d instanceof BitmapDrawable) {
+            return ((BitmapDrawable) d).getBitmap();
+        } else if ((Build.VERSION.SDK_INT >= 26)
+                && (d instanceof AdaptiveIconDrawable)) {
+            AdaptiveIconDrawable icon = ((AdaptiveIconDrawable)d);
+            int w = icon.getIntrinsicWidth();
+            int h = icon.getIntrinsicHeight();
+            Bitmap result = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
+            Canvas canvas = new Canvas(result);
+            canvas.drawColor(0);
+            canvas.drawBitmap(result, 0F, 0F, null);
+            icon.setBounds(0, 0, w, h);
+            icon.draw(canvas);
+            return result;
+        }
+        float density = this.getResources().getDisplayMetrics().density;
+        int defaultWidth = (int)(48* density);
+        int defaultHeight = (int)(48* density);
+        return Bitmap.createBitmap(defaultWidth, defaultHeight, Bitmap.Config.ARGB_8888);
+    }
+
+
     // ---------------------------------------------------------------------
 
     /////////  LUMINANCE  bar and switch
@@ -377,7 +544,8 @@ public class MainActivity extends AppCompatActivity {
         String clock = sdf.format(new Date()); // clock in text format
         int top=255-topmrg;
         final Glasses g = connectedGlasses;
-        if (g != null) {
+        if (g != null && !notification) {
+            messageHandler.removeCallbacks(messageRunnable);
             g.battery(r1 -> { gbattery=r1;
                 connectedGlasses.cfgSet("ALooK");
                 if (r1 < 25) {connectedGlasses.imgDisplay((byte) 1, (short) (272-lftmrg), (short) (top-26));}
@@ -580,4 +748,6 @@ public class MainActivity extends AppCompatActivity {
         text = text.replaceAll("°",String.valueOf((char) 64));
 
         return text;
-    }}
+    }
+
+}

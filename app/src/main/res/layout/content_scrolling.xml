@@ -323,19 +323,6 @@
                 android:backgroundTint="@color/error"
                 android:text="@string/menu_disconnect" />
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="3dp" />
-
-            <TextView
-                android:id="@+id/chgeapp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textColor="@color/purple_500"
-                android:text="For sailing, consider changing this app to the new :\n Activelook SAILING"
-                android:textStyle="bold" />
-
         </LinearLayout>
 
     </LinearLayout>
