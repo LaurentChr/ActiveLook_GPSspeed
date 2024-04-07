@@ -49,6 +49,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.activelook.activelooksdk.Glasses;
@@ -141,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
         String[] choices = getResources().getStringArray(R.array.unit_array);
         adapter_unit = new ArrayAdapter(this, R.layout.list_item, choices);
         unit.setAdapter(adapter_unit);
+        adapter_unit.setDropDownViewResource(R.layout.spinner_dropdown_item);
 
         setSupportActionBar(toolbar);
         CollapsingToolbarLayout toolBarLayout = findViewById(R.id.toolbar_layout);
@@ -175,6 +177,7 @@ public class MainActivity extends AppCompatActivity {
         unit.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @SuppressLint("SetTextI18n")
             public void onItemSelected(AdapterView<?> parent, View v, int position, long id) {
+                ((TextView) parent.getChildAt(0)).setTextColor(ContextCompat.getColor(MainActivity.this,R.color.grey));
                 unitRatio = 3.6; unitShort = " km/h";
                 if (position==0) {unitRatio = 3.6;
                     unitShort = getResources().getStringArray(R.array.unit_array)[0];}
@@ -241,7 +244,6 @@ public class MainActivity extends AppCompatActivity {
 
             if(displayData) {
                 prev_packageName = packageName; prev_titleData = titleData; prev_textData = textData;
-                Drawable drawable_pack = null;
 
                 //================= PREPARE TO WRITE IN THE GLASSES
 

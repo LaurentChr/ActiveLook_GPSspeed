@@ -15,4 +15,5 @@
     <color name="success">#FF1BC830</color>
     <color name="warning">#FFFC5609</color>
     <color name="error">#FFFE3639</color>
+    <color name="spinnerTextColor">#FF808080</color>
 </resources>

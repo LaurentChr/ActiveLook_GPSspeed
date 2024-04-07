@@ -112,7 +112,6 @@
                     android:layout_weight="1"
                     android:textSize="20sp"
                     android:textStyle="bold"
-                    android:textColor="@color/black"
                     android:text="@string/latitude"/>
 
             </LinearLayout>
@@ -133,7 +132,6 @@
                     android:layout_weight="1"
                     android:textSize="20sp"
                     android:textStyle="bold"
-                    android:textColor="@color/black"
                     android:text="@string/longitude" />
 
             </LinearLayout>
@@ -153,7 +151,6 @@
                     android:layout_weight="1"
                     android:textSize="20sp"
                     android:textStyle="bold"
-                    android:textColor="@color/black"
                     android:text="@string/altitude" />
             </LinearLayout>
 
@@ -169,7 +166,6 @@
                     android:layout_weight="1"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    android:textColor="@color/grey"
                     android:text="@string/altitude" />
 
                 <TextView
@@ -179,7 +175,6 @@
                     android:layout_weight="1"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    android:textColor="@color/grey"
                     android:text="@string/altitude" />
 
                 <Space
@@ -203,7 +198,6 @@
                     android:layout_weight="1"
                     android:textSize="20sp"
                     android:textStyle="bold"
-                    android:textColor="@color/black"
                     android:text="@string/bearing" />
             </LinearLayout>
 
@@ -222,7 +216,6 @@
                     android:layout_weight="1"
                     android:textSize="24sp"
                     android:textStyle="bold"
-                    android:textColor="@color/black"
                     android:text="@string/speed" />
                 <Spinner
                     android:id="@+id/unit"
