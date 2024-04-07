@@ -58,4 +58,6 @@ This "ActiveLook GPSspeed" application connects to Activelook® smart glasses to
 
 This application is dedicated to any activities during which you need to keep track of your GPS data and variations easily right in your eyes without moving your head, especially sailing on a boat, or riding  bicycle, or walking in the countryside or in the mountains.
 
+It also displays your mobile notifications at the top of the screen during a few seconds ... as on your smartphone. 
+
 This "ActiveLook® GPSspeed" application connects to any Activelook® augmented reality glasses to display, live, and right in your field of vision, the key information you need to keep you always informed. The application will first pair via BTLE with your Activelook® smart glasses.
